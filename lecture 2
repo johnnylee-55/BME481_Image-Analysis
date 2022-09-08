@@ -1,0 +1,28 @@
+Image Analysis
+
+2D Projection of 3D world
+    - image analysis is intrinsicly ill-posed when solving problems
+    - can be somewhat mitigated by applying constraints on possible solutions
+Issues
+    - spatial distributions of each pixel
+    - Dynamic range for each pixel (e.g. 8 bits, 10 bits, 16 bits)
+    - Hierarchial representation
+    - Compression (.jpeg)
+    - abstraction
+Rectangular vs Hexagonal Grid
+    - distance between a pixel and other pixels in its neighborhood is more consistent in a hexagonal grid
+    - rectangular grid is more compact, and most of our technology makes use of rectangular pixels
+Neighborhood configuration
+    - 4-neighborhood & 8-neighborhood
+Representation
+    - iconic image
+        - histogram and moment-based
+    - segmented image
+    - geometric image
+    - relational model
+Chain Code
+    - saves space
+startingPoint
+
+Some Analysis Methods
+    - Connected Components

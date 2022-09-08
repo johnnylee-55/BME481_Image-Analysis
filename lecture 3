@@ -1,0 +1,33 @@
+Quad Tree - partioning an image into quadrants(UR, UL, LR, LL) to homogenize the image
+    is the quadrant homogenous? if yes, leave alone. If no, partition that quadrant into another
+    4 quadrants and repeat
+How can we tell if an image or subimage is homogenous?
+    Standard Deviation within an acceptable threshold
+
+1) Establish Quadtree
+2) Merge nearby regions
+
+Noise Models
+    Guassian
+        - mathematically easy to work with, good approximation to other kinds of noise
+    Rayleigh
+        - magnetic resonance imaging
+    Poisson
+        - X-ray
+    Uniform
+        - Quantization noise
+    Impulse noise
+        - Error in transmission, dead pixels in the detector
+
+*read into recursion in programming
+
+Basic Imaging operations
+    - Pointwise Operation
+        - image normalization
+        - image enhancement
+            - table lookup
+            - Goal: create an image without equally distrubited brightness levels over the whole scale
+            Probability Density function, histograms, cumulative density functions
+    - Neighborhood Operations
+        - edge detection
+        - filtering
