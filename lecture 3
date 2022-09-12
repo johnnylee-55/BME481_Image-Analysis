@@ -1,6 +1,7 @@
 Quad Tree - partioning an image into quadrants(UR, UL, LR, LL) to homogenize the image
     is the quadrant homogenous? if yes, leave alone. If no, partition that quadrant into another
     4 quadrants and repeat
+
 How can we tell if an image or subimage is homogenous?
     Standard Deviation within an acceptable threshold
 
@@ -28,6 +29,54 @@ Basic Imaging operations
             - table lookup
             - Goal: create an image without equally distrubited brightness levels over the whole scale
             Probability Density function, histograms, cumulative density functions
+
     - Neighborhood Operations
+        - interpolation
+            - image smoothing / average filter
+                - slide a window over an image (a 3x3 window of pixels with the pixel of interest at the center)
+                           | 1  1  1 |
+                  h =  1/9 | 1  1  1 |
+                           | 1  1  1 |
+                  averaging filter with no weight
+
+                           | 1  1  1 |
+                  h = 1/10 | 1  2  1 |
+                           | 1  1  1 |
+
+                           | 1  2  1 |
+                  h = 1/16 | 2  4  2 |
+                           | 1  2  1 |
+                  filters with more weight on the center pixel
+                 - windows can vary in size depending on use case
+                 - larger matrix = more smoothing
+                 - image smoothing degrades the edges in the image
+                 - linear method
+
+            - median filtering
+                - selects median-value in the pixel neighborhood as a representative
+                - non-linear method
+                - preserves edges
+
         - edge detection
+            - essentially a derivative operation
+            - issues:
+                - noise
+                - scale
+                - scale
+
+            - Done by finding a maximum in the gradient (first derivative) or a change of sign (+/-) in the second derivative (zero-crossing)
+                - however, use of zero-crossing can lead to localization errors, edges that should not exist
+
+            - Edges:
+                - are typically noisy
+                - have varying contrasts along the object
+                - occur at different scales
+                - may interact when you have two nearby objects
+
+            - Gaussian filters for edge detection
+                - weighted more on the middle, and weighted less as distance increases from "center"
+                - 1D guassian filter
+                    g(x) = 1/(sqrt(2pi)sigma) * e.exp(-x^2 / 2sigma^2)
+                    - as signma increases, window size also needs to be increased
+
         - filtering
