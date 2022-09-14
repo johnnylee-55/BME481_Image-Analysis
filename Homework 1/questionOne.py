@@ -1,7 +1,18 @@
-from PIL import Image
+from PIL import Image,ImageOps
+import matplotlib.pyplot as plt
+import cv2
+import numpy as np
 
 #open the image
-img = Image.open("BME 481\Winter.png")
-print(type(img))
+#mac
+img = Image.open("Winter.png")
+#windows
+#img = Image.open([enter filepath here])
 
+#color
 img.show()
+#gray
+imgGray = ImageOps.grayscale(img)
+imgGray.show()
+
+#plot grayscale histogram
