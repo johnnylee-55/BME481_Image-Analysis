@@ -75,8 +75,31 @@ Basic Imaging operations
 
             - Gaussian filters for edge detection
                 - weighted more on the middle, and weighted less as distance increases from "center"
+                    - this profile is desirable
+                - efficient for any n-dimensional signals
+                - Optimally, a fitler should have limited support in spatial and frequency domain. 
+                - "Nice Scale Behavior"
                 - 1D guassian filter
-                    g(x) = 1/(sqrt(2pi)sigma) * e.exp(-x^2 / 2sigma^2)
+                    g(x) = 1/(sqrt(2pi)σ) * e.exp(-x^2 / 2σ^2)
                     - as signma increases, window size also needs to be increased
+                        - σ = 0, window size = 5
+                        - σ = 1, window size = 9
+                        - σ = 2, window size = 17
+                        - using a lower value for σ than optimal leads to blur/round-off errors
+                - 2D guassian filter
+                    g'(x) (derivative of 1D gaussian)
+                    - also known as Laplacian of Gaussian (LoG) filter
+                    - LoG ∇^2*G = G(σ1) - G(σ2)
+                    - σ = 1.6 found to be ideal
+                - used to find magnitude and direction of edges
+                    - useful for grouping
+                    - can follow contours that are even 1 pixel wide
+            - Post Processing
+                - ideally, edges are 1 pixel wide
+                - thin the edge by finding direction/curve of edge with tangent
+                - look into canny edge detection
 
         - filtering
+            real life example: filter out the smokey atmosphere from an image
+                - the smoke causes attenuated incident light that is a function of distance
+                - convolve the image with a neighrborhood operator 
