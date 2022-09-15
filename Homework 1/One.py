@@ -13,7 +13,7 @@ imgGray.show()
 
 # b. generate grayscale histogram, normalize
 imgHist = np.ravel(imgGray)
-plt.hist(imgHist, density = "true", bins = 255)
+plt.hist(imgHist, density = "true", bins = 256)
 plt.title("Winter, grayscale")
 plt.xlabel("value")
 plt.ylabel("frequency")
@@ -30,7 +30,7 @@ imgCropped = imgGray.crop((left, top, right, bottom))
 imgCropped.show()
 # generates historgram of cropped image
 imgCrpHst = np.ravel(imgCropped)
-plt.hist(imgCrpHst, density = "true", bins = 230)
+plt.hist(imgCrpHst, density = "true", bins = 256)
 plt.title("Winter (cropped), grayscale")
 plt.xlabel("value")
 plt.ylabel("frequency")
@@ -38,7 +38,7 @@ plt.show()
 
 # d. overlay the histograms of entire and cropped image 
 plt.hist(imgHist, bins = 256, density = "true", alpha = 0.7, label = "full img")
-plt.hist(imgCrpHst, bins = 230, density = "true", alpha = 0.7, label = "cropped img")
+plt.hist(imgCrpHst, bins = 256, density = "true", alpha = 0.7, label = "cropped img")
 plt.title("Winter (full vs cropped)")
 plt.legend(loc = "upper left")
 plt.xlabel("value")
@@ -54,9 +54,12 @@ imgDsrtGry.show()
 # f. compare histograms of b. and e. by overlapping
 imgDsrtHst = np.ravel(imgDsrtGry)
 plt.hist(imgHist, bins = 256, density = "true", alpha = 0.7, label = "winter")
-plt.hist(imgDsrtHst, bins = 200, density = "true", alpha = 0.7, label = "desert")
+plt.hist(imgDsrtHst, bins = 256, density = "true", alpha = 0.7, label = "desert")
 plt.title("Winter vs Desert, grayscale")
 plt.legend(loc = "upper left")
 plt.xlabel("value")
 plt.ylabel("frequency")
 plt.show()
+
+# QUESTIONS:
+# why does the histograms look broken?
