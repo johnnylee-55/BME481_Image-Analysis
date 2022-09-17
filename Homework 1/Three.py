@@ -6,6 +6,7 @@ import numpy as np
 img = Image.open("valley.tif") #mac path
 #img = Image.open("BME 481\valley.tif") #windows path
 
+# equalize img histogram
 imgE = ImageOps.equalize(img, mask = None)
 
 # show images
@@ -15,6 +16,7 @@ imgE.show()
 # show histograms
 imgHist = np.ravel(img)
 imgEHist = np.ravel(imgE)
+# overlay and label histograms
 plt.hist(imgHist, bins = 256, density = "true", alpha = 0.7, label = "source")
 plt.hist(imgEHist, bins = 256, density = "true", alpha = 0.7, label = "filtered")
 plt.title("Source vs Filtered")

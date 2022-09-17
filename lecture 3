@@ -90,7 +90,8 @@ Basic Imaging operations
                     g'(x) (derivative of 1D gaussian)
                     - also known as Laplacian of Gaussian (LoG) filter
                     - LoG ∇^2*G = G(σ1) - G(σ2)
-                    - σ = 1.6 found to be ideal
+                    - ratio between σ1 and σ2 1.6 found to be ideal
+                    - can be reduced to 2 1-dimensional gaussian filters (efficient)
                 - used to find magnitude and direction of edges
                     - useful for grouping
                     - can follow contours that are even 1 pixel wide
@@ -103,3 +104,7 @@ Basic Imaging operations
             real life example: filter out the smokey atmosphere from an image
                 - the smoke causes attenuated incident light that is a function of distance
                 - convolve the image with a neighrborhood operator 
+                
+        - Image sharpening and blurring
+            convolve an image with a kernal, changing σ value changes effects of different filters
+                - Zero-crossing filter

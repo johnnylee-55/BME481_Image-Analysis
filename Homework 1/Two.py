@@ -4,6 +4,7 @@ from PIL import Image, ImageOps
 img = Image.open("Lenna.png") #mac path
 #img = Image.open("BME 481\Lenna.png") #windows path
 imgGray = ImageOps.grayscale(img)
+imgGray.show()
 
 # ii) downsample the image by three levels
 for x in range(3):
