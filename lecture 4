@@ -1,0 +1,10 @@
+Segmenting textures
+    Approach
+        - Supervised (discriminateive models)
+            -
+        - Texture feature detectors
+            - textures in different orientations
+            - Generated how?
+                - modulate sigma differently in x and y directions
+                - compute a first, 2nd, 3rd derivatives
+                - build a large

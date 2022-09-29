@@ -4,7 +4,6 @@ import numpy as np
 
 # a. open the image, display in color and grayscale
 img = Image.open("Winter.png") #mac path
-#img = Image.open("BME 481\Winter.png") #windows path
 # display image (color)
 img.show()
 # display image (grayscale)
@@ -28,7 +27,7 @@ bottom = 500
 # c. crops image with above parameters
 imgCropped = imgGray.crop((left, top, right, bottom))
 imgCropped.show()
-# generates historgram of cropped image
+# generates histogram of cropped image
 imgCrpHst = np.ravel(imgCropped)
 plt.hist(imgCrpHst, density = "true", bins = 240)
 plt.title("Winter (cropped), grayscale")
