@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # open image
-img = Image.open("nature.JPG")
+img = Image.open("/Users/johnnylee/dev/python/bme481/Homework 1/Images/nature.JPG")
 img.show()
 
 # dimensions

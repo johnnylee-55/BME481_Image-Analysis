@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # a. open the image, display in color and grayscale
-img = Image.open("Winter.png") #mac path
+img = Image.open("/Users/johnnylee/dev/python/bme481/Homework 1/Images/Winter.png") #mac path
 # display image (color)
 img.show()
 # display image (grayscale)
@@ -45,7 +45,7 @@ plt.ylabel("frequency")
 plt.show()
 
 # e. read Desert.png, convert to grayscale, display
-imgDesert = Image.open("Desert.png") #mac path
+imgDesert = Image.open("/Users/johnnylee/dev/python/bme481/Homework 1/Images/Desert.png") #mac path
 #imgDesert = Image.open("BME 481\Winter.png") #windows path
 imgDsrtGry = ImageOps.grayscale(imgDesert)
 imgDsrtGry.show()

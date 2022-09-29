@@ -1,7 +1,7 @@
 from PIL import Image, ImageOps
 
 # i) covert image to grayscale
-img = Image.open("Lenna.png") #mac path
+img = Image.open("/Users/johnnylee/dev/python/bme481/Homework 1/Images/Lenna.png") #mac path
 #img = Image.open("BME 481\Lenna.png") #windows path
 imgGray = ImageOps.grayscale(img)
 imgGray.show()

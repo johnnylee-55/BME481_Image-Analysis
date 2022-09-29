@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # read "valley.tif", apply image enhancement, and show histogram before and after
-img = Image.open("valley.tif") #mac path
+img = Image.open("/Users/johnnylee/dev/python/bme481/Homework 1/Images/valley.tif") #mac path
 #img = Image.open("BME 481\valley.tif") #windows path
 
 # equalize img histogram
