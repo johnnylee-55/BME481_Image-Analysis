@@ -102,4 +102,7 @@ for sigma in sigmaValuesB: #loops through with sigma =
     plt.show()
 
 # c. What is your insights based on a, b?
-
+#
+#    I would say that if the user wanted to use this the DoG
+#    for edge detection, a value for sigma should be between
+#    1 and 3. 
