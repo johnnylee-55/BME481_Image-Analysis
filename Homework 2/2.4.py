@@ -14,9 +14,10 @@ import cv2
 img = Image.open("Homework 2/images/Lenna.png")
 lenna = ImageOps.grayscale(img)
 
-# implement derivative of Gaussian
+# stores images for use later in the problem
 imageStorageArray = []
 
+# implements derivative of Gaussian, loops through with different values of sigma
 sigmaValuesA = [1, 3, 5]
 for sigma in sigmaValuesA:
     diffGaussian = ndi.gaussian_laplace(lenna, sigma)
@@ -25,12 +26,12 @@ for sigma in sigmaValuesA:
     plt.axis('off')
     plt.show()
     imageStorageArray.append(diffGaussian)
-    
 
 # show derivatives in x and y direction
 dx = np.diff(lenna, axis = 1)
 dy = np.diff(lenna, axis = 0)
 
+# generate plot
 fig = plt.figure(figsize=(10,7))
 
 fig.add_subplot(1,2,1)
@@ -45,40 +46,33 @@ plt.axis('off')
 plt.show()
 
 # compute and show magnitude with edge directions
-#Sobel
-gx_s = cv2.Sobel(imageStorageArray[0], cv2.CV_64F, 1, 0)
-gy_s = cv2.Sobel(imageStorageArray[0], cv2.CV_64F, 0, 1)
-gx_c1 = cv2.Sobel(imageStorageArray[1], cv2.CV_64F, 1, 0)
-gy_c1 = cv2.Sobel(imageStorageArray[1], cv2.CV_64F, 0, 1)
-gx_c2 = cv2.Sobel(imageStorageArray[2], cv2.CV_64F, 1, 0)
-gy_c2 = cv2.Sobel(imageStorageArray[2], cv2.CV_64F, 0, 1)
+def showEdgeMagnitudeDirection(imageStorageArray):
+    # Sobel
+    gaussian_dx_sigma3 = cv2.Sobel(imageStorageArray[1], cv2.CV_64F, 1, 0)
+    gaussian_dy_sigma3 = cv2.Sobel(imageStorageArray[1], cv2.CV_64F, 0, 1)
 
-#Magnitude and Orientation
-mag_s = np.sqrt((gx_s ** 2) + (gy_s ** 2))
-orient_s = np.arctan2(gy_s, gx_s) * (180 / np.pi) % 180
-mag_c1 = np.sqrt((gx_c1 ** 2) + (gy_c1 ** 2))
-orient_c1 = np.arctan2(gy_c1, gx_c1) * (180 / np.pi) % 180
-mag_c2 = np.sqrt((gx_c2 ** 2) + (gy_c2 ** 2))
-orient_c2 = np.arctan2(gy_c2, gx_c2) * (180 / np.pi) % 180
+    # Magnitude and Orientation
+    mag_c1 = np.sqrt((gaussian_dx_sigma3 ** 2) + (gaussian_dy_sigma3 ** 2))
+    orient_c1 = np.arctan2(gaussian_dy_sigma3, gaussian_dx_sigma3) * (180 / np.pi) % 180
 
-##Synth Plot
-(fig, axs) = plt.subplots(nrows=1, ncols=2, figsize=(8, 4))
-axs[0].imshow(mag_c1, cmap="jet")
-axs[1].imshow(orient_c1, cmap="jet")
-#Title
-axs[0].set_title("Gradient Magnitude")
-axs[1].set_title("Gradient Orientation [0, 180]")
-for i in range(0, 2):
-	axs[i].get_xaxis().set_ticks([])
-	axs[i].get_yaxis().set_ticks([])
-plt.tight_layout()
-plt.show()
+    # generate plot
+    fig = plt.figure(figsize = (10, 7))
+    fig.add_subplot(1,2,1)
+    plt.imshow(mag_c1)
+    plt.title("Gradient Magnitude")
+    fig.add_subplot(1,2,2)
+    plt.imshow(orient_c1)
+    plt.title("Gradient Orientations [0-180]")
+    plt.show()
+
+# 0th element -> sigma=1, 1st element -> sigma=3, 2nd element -> sigma=5 
+showEdgeMagnitudeDirection(imageStorageArray)
 
 # b. Show the zero-crossing image for sigma = 1, 2, 8.
 sigmaValuesB = [1, 2, 8]
-for sigma in sigmaValuesB: #loops through with sigma =
+for sigma in sigmaValuesB: 
     LoG = ndi.gaussian_laplace(lenna, sigma)
-    threshold = np.absolute(LoG).mean() * 0.75
+    threshold = np.absolute(LoG).mean() * 0.1
     output = np.zeros(LoG.shape)
     width = output.shape[1]
     height = output.shape[0]
