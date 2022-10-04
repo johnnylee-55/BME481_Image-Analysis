@@ -8,7 +8,7 @@ import cv2
 
 # 4. use lenna image
 # a. implement a derivative of Gaussian, with sigma = 1, 3, 5, and
-#    convolve with the Lenna image. Show the derivatives in the X and Y diretions.
+#    convolve with the Lenna image. Show the derivatives in the X and Y directions.
 #    Compute and show magnitude with edge direction.
 
 img = Image.open("Homework 2/images/Lenna.png")
@@ -22,7 +22,7 @@ sigmaValuesA = [1, 3, 5]
 for sigma in sigmaValuesA:
     diffGaussian = ndi.gaussian_laplace(lenna, sigma)
     plt.imshow(diffGaussian)
-    plt.title('Deriviative of Gaussian, sigma = ' + str(sigma))
+    plt.title('Derivative of Gaussian, sigma = ' + str(sigma))
     plt.axis('off')
     plt.show()
     imageStorageArray.append(diffGaussian)
@@ -95,8 +95,10 @@ for sigma in sigmaValuesB:
     plt.axis('off')
     plt.show()
 
-# c. What is your insights based on a, b?
+# c. What are your insights based on a, b?
 #
-#    I would say that if the user wanted to use this the DoG
-#    for edge detection, a value for sigma should be between
-#    1 and 3. 
+#    Increasing the value of sigma in the Derivative of Gaussian filter puts 
+#    more weight to the sides of the filter, which produces a ‘blurring’ effect
+#    and tends to also erase details in an image. As sigma increases, the DoG and
+#    LoG comparisons of different sigma values reveal that edges lose strength
+#    when applying a derivative of gaussian with a high sigma value.
