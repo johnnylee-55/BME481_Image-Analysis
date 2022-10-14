@@ -1,0 +1,21 @@
+from PIL import Image,ImageOps
+import cv2
+import numpy as np
+
+# 1) read CoffeeBeans.tif and threshold it automatically
+coffeebeans = Image.open("Homework 3/CoffeeBeans.tif")
+
+# convert to grayscale
+CBgray = ImageOps.grayscale(coffeebeans)
+
+# apply thresholding
+ret, thresh1 = cv2.threshold(CBgray, 120, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+thresh1.show()
+
+# 2) segment and label each coffee bean automatically
+
+# 3) count the number of beans and plot a histogram to represent the distribution
+#    for the size of coffee beans
+
+# 4) Assuming that μ=average size of coffee beans, what is the probability that there are 
+#    coffee beans less than μ/2? 
