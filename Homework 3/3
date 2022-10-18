@@ -108,14 +108,17 @@ print(avg)
 # from above: avgArea = 963.731707
 
 # list of sizes of beans, from code above
-listOfBeanSizes = [44671, 136, 1105, 899, 969, 1547]
-# total number of beans
-numberOfBeans = 22
+listOfBeanSizes = [136, 1105, 899, 969, 1547, 1022, 1382, 1193, 1413, 863, 1083, 1211,
+                   12, 982, 1176, 841, 1159, 983, 839, 872, 792, 1235, 795, 1079, 1317,
+                   1129, 988, 1043, 998, 723, 858, 993, 1185, 993, 1185, 1267, 1413, 987,
+                   1003, 955, 663, 163, 240]
 
-def findProbOfAreaUnderHalfMu(listOfSizes, numberOfBeans):
+def findProbOfAreaUnderHalfMu(listOfSizes):
     sumArea = 0
+    numberOfBeans = 0
     for i in listOfSizes:
         sum += i
+        numberOfBeans += 1
     averageArea = sumArea / numberOfBeans
     halfAverageArea = averageArea / 2
 
@@ -128,4 +131,4 @@ def findProbOfAreaUnderHalfMu(listOfSizes, numberOfBeans):
 
     return probability
 
-print("Probability that bean size is under µ/2: " + findProbOfAreaUnderHalfMu(listOfBeanSizes, numberOfBeans) )
+print("Probability that bean size is under µ/2: " + findProbOfAreaUnderHalfMu(listOfBeanSizes) )
