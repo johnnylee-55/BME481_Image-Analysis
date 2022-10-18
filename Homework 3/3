@@ -105,3 +105,27 @@ df.hist(column = "area", bins = 25)
 df.hist(column = "area", bins = 25, density = 'True')
 avg = df.mean()
 print(avg)
+# from above: avgArea = 963.731707
+
+# list of sizes of beans, from code above
+listOfBeanSizes = [44671, 136, 1105, 899, 969, 1547]
+# total number of beans
+numberOfBeans = 22
+
+def findProbOfAreaUnderHalfMu(listOfSizes, numberOfBeans):
+    sumArea = 0
+    for i in listOfSizes:
+        sum += i
+    averageArea = sumArea / numberOfBeans
+    halfAverageArea = averageArea / 2
+
+    beansUnderHalfAverageArea = 0
+    for i in listOfSizes:
+        if i < halfAverageArea:
+            beansUnderHalfAverageArea += 1
+    
+    probability = beansUnderHalfAverageArea / numberOfBeans
+
+    return probability
+
+print("Probability that bean size is under µ/2: " + findProbOfAreaUnderHalfMu(listOfBeanSizes, numberOfBeans) )
