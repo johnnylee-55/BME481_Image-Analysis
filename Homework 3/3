@@ -108,8 +108,10 @@ def findProbOfAreaUnderHalfMu(listOfSizes):
         sumArea += i
         numberOfBeans += 1
     averageArea = sumArea / numberOfBeans
+    
     print("Number of beans: " + str(numberOfBeans))
-    print("Average bean size: " + str(averageArea))
+    print("Average bean size (µ): " + str(averageArea))
+    
     halfAverageArea = averageArea / 2
 
     beansUnderHalfAverageArea = 0
