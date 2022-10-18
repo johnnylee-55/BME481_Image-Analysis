@@ -111,7 +111,7 @@ def findProbOfAreaUnderHalfMu(listOfSizes):
     
     print("Number of beans: " + str(numberOfBeans))
     print("Average bean size (µ): " + str(averageArea))
-    
+
     halfAverageArea = averageArea / 2
 
     beansUnderHalfAverageArea = 0
@@ -121,8 +121,8 @@ def findProbOfAreaUnderHalfMu(listOfSizes):
     
     probability = beansUnderHalfAverageArea / numberOfBeans
 
-    return probability
+    return probability * 100
 
-probability = findProbOfAreaUnderHalfMu(listOfBeanSizes) * 100
+probability = findProbOfAreaUnderHalfMu(listOfBeanSizes)
 
 print("Probability that bean size is under µ/2: " + str(probability) + "%")
