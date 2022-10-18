@@ -4,17 +4,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 from skimage import measure, color
 
-# 1) read CoffeeBeans.tif and threshold it automatically
 img = cv2.imread("Homework 3/CoffeeBeans.tif")
-
-# 2) segment and label each coffee bean automatically
-
-# 3) count the number of beans and plot a histogram to represent the distribution
-#    for the size of coffee beans
-
-# 4) Assuming that μ=average size of coffee beans, what is the probability that there are 
-#    coffee beans less than μ/2? 
-
 
 #Show Image (Q1)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -95,19 +85,17 @@ plt.imshow(img2)
 props = measure.regionprops_table(markers, gray, properties = ['label', 'area'])
 
 df = pd.DataFrame(props)
-print(df.head())
+#print(df.head())
 
 df = df[df['area'] < 10000 ]
-print(df.head())
+#print(df.head())
 
 df.hist(column = "area", bins = 25)
 ##Find probability of average value / 2
 df.hist(column = "area", bins = 25, density = 'True')
 avg = df.mean()
-print(avg)
-# from above: avgArea = 963.731707
 
-# list of sizes of beans, from code above
+# list of sizes of beans, from data frame generated
 listOfBeanSizes = [136, 1105, 899, 969, 1547, 1022, 1382, 1193, 1413, 863, 1083, 1211,
                    12, 982, 1176, 841, 1159, 983, 839, 872, 792, 1235, 795, 1079, 1317,
                    1129, 988, 1043, 998, 723, 858, 993, 1185, 993, 1185, 1267, 1413, 987,
@@ -117,9 +105,11 @@ def findProbOfAreaUnderHalfMu(listOfSizes):
     sumArea = 0
     numberOfBeans = 0
     for i in listOfSizes:
-        sum += i
+        sumArea += i
         numberOfBeans += 1
     averageArea = sumArea / numberOfBeans
+    print("Number of beans: " + str(numberOfBeans))
+    print("Average bean size: " + str(averageArea))
     halfAverageArea = averageArea / 2
 
     beansUnderHalfAverageArea = 0
@@ -131,4 +121,6 @@ def findProbOfAreaUnderHalfMu(listOfSizes):
 
     return probability
 
-print("Probability that bean size is under µ/2: " + findProbOfAreaUnderHalfMu(listOfBeanSizes) )
+probability = findProbOfAreaUnderHalfMu(listOfBeanSizes) * 100
+
+print("Probability that bean size is under µ/2: " + str(probability) + "%")
