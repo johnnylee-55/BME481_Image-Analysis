@@ -101,26 +101,29 @@ listOfBeanSizes = [136, 1105, 899, 969, 1547, 1022, 1382, 1193, 1413, 863, 1083,
                    1129, 988, 1043, 998, 723, 858, 993, 1185, 993, 1185, 1267, 1413, 987,
                    1003, 955, 663, 163, 240]
 
+# given a list of bean sizes, prints the number of beans, average bean size, and returns the probability
+# that a random bean's size is under half the average size of all beans
 def findProbOfAreaUnderHalfMu(listOfSizes):
     sumArea = 0
     numberOfBeans = 0
+
+    # iterates through list, finds total bean "area", number of beans, and average bean size
     for i in listOfSizes:
         sumArea += i
         numberOfBeans += 1
     averageArea = sumArea / numberOfBeans
-    
+
+    # prints number of beans and average bean size
     print("Number of beans: " + str(numberOfBeans))
     print("Average bean size (µ): " + str(averageArea))
 
-    halfAverageArea = averageArea / 2
-
+    # iterates through list to count beans under half-average
     beansUnderHalfAverageArea = 0
     for i in listOfSizes:
-        if i < halfAverageArea:
+        if i < averageArea / 2:
             beansUnderHalfAverageArea += 1
-    
+    # calculates and returns probability
     probability = beansUnderHalfAverageArea / numberOfBeans
-
     return probability * 100
 
 probability = findProbOfAreaUnderHalfMu(listOfBeanSizes)
