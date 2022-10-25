@@ -19,9 +19,9 @@ lines = cv2.HoughLinesP(
             edges,
             1, # Distance resolution in pixels
             np.pi / 180, # Angle resolution in radians
-            threshold = 100, # Min number of votes for valid line
-            minLineLength = 40, # Min allowed length of line
-            maxLineGap = 15 # Max allowed gap between line for joining them
+            threshold = 120, # Min number of votes for valid line
+            minLineLength = 30, # Min allowed length of line
+            maxLineGap = 120 # Max allowed gap between line for joining them
             )
 
 # iterates over lines, connects endpoints by drawing lines, adds endpoints to new array lines_array
@@ -31,7 +31,7 @@ for points in lines:
     x1,y1,x2,y2 = points[0]
 
     # Draw the lines joing the points on the original image 'hwy'
-    cv2.line(hwy, (x1,y1), (x2,y2), (0,255,0), 2)
+    cv2.line(hwy, (x1,y1), (x2,y2), (0,0,255), 2)
 
     # stores line to lines_array, saved as a set of two endpoint with each set representing a line
     lines_array.append([(x1,y1), (x2,y2)])
