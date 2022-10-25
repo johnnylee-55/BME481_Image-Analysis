@@ -10,7 +10,7 @@ gray = cv2.cvtColor(hwy, cv2.COLOR_BGR2GRAY)
 # applies median blur to remove background noise
 blur = cv2.medianBlur(gray,5)
 
-# canny edge detection, (image source, minimum threshold, maximum threshold)
+# canny edge detection, Canny(image source, minimum threshold, maximum threshold)
 edges = cv2.Canny(blur, 80, 110)
 
 # applies probabilistic hough line transform method on 'edges' to obtain line end points
