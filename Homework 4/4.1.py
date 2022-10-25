@@ -23,7 +23,7 @@ lines = cv2.HoughLinesP(edges,
             maxLineGap = 20 # Max allowed gap between line for joining them
             )
 
-# iterates over lines, draws the
+# iterates over lines, connects endpoints by drawing lines, adds endpoints to new array lines_array
 lines_array = []
 for points in lines:
     # Extracted points nested in the array
