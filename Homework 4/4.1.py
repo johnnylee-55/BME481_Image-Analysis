@@ -14,7 +14,7 @@ blur = cv2.medianBlur(gray,5)
 edges = cv2.Canny(blur, 50, 150)
 
 # applies probabilistic hough line transform method on 'edges' to obtain line end points
-# returns list of x,y coordinates of endpoints of each line
+# returns list of endpoints for each line, with each element in the array as 4 integers (x1, y1, x2, y2)
 lines = cv2.HoughLinesP(edges,
             1, # Distance resolution in pixels
             np.pi / 180, # Angle resolution in radians
@@ -28,9 +28,9 @@ lines_array = []
 for points in lines:
     # Extracted points nested in the array
     x1,y1,x2,y2 = points[0]
-    # Draw the lines joing the points on the original image
+    # Draw the lines joing the points on the original image 'hwy'
     cv2.line(hwy, (x1,y1), (x2,y2), (0,255,0), 2)
-    # Maintain a simple lookup list for points
+    # Adds line to lines_array, saved as a set of two endpoint with each set representing a line
     lines_array.append([(x1,y1), (x2,y2)])
      
 # Save the result image as 'detectedLines.png'
