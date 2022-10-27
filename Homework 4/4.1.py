@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import math
 
 # reads image
 hwy = cv2.imread('Homework 4/HWY447.png')
@@ -25,7 +26,7 @@ lines = cv2.HoughLinesP(
             )
 
 # iterates over lines, connects endpoints by drawing lines, adds endpoints to new array lines_array
-lines_array = []
+linesArray = []
 for points in lines:
     # Extracted points nested in the array
     x1,y1,x2,y2 = points[0]
@@ -33,8 +34,15 @@ for points in lines:
     # Draw the lines joing the points on the original image 'hwy'
     cv2.line(hwy, (x1,y1), (x2,y2), (0,0,255), 2)
 
-    # stores line to lines_array, saved as a set of two endpoint with each set representing a line
-    lines_array.append([(x1,y1), (x2,y2)])
-     
+# prints all endpoints 
+print(lines)
+
 # Save the result image as 'detectedLines.png'
 cv2.imwrite('Homework 4/detectedLines.png',hwy)
+
+# draws line for path to be taken
+height = hwy.shape[1]
+width = hwy.shape[0]
+
+cv2.line(hwy, (int(width/2), int(height)), (286, 7), (0,255,0), 2)
+cv2.imwrite('Homework 4/pathDrawn.png',hwy)
