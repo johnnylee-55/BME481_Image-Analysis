@@ -8,9 +8,8 @@ import matplotlib.pyplot as plt
 from sklearn import decomposition
 from PIL import Image, ImageOps
 
-brain = Image.open("Midterm/HE_Brain.bmp")
+brain = Image.open("Homework_Midterm/HE_Brain.bmp")
 img = ImageOps.grayscale(brain)
-
 
 ## Apply NMF (e.g, V = WH) by randomly initializing W and H. Do this 3 times. Display 
 ## the basis images. Are results consistent?
@@ -38,3 +37,11 @@ for i in range(3):
     H = estimator.components_
     V = np.dot(W, H)
     plot3figs(W, "W basis", H, "H basis", V, "V = WH")
+
+# results seem consistent, although there are slight differences in the value of the color
+# in the reconstructed images.
+
+## Now lets’s initialize the matrix W with some prior knowledge. How would you do this? 
+## You can move the cursor over the image manually, read the values, and substitute in W 
+## or you may want to take advantage of a precomputed mask, named HE_Brain_mask.bmp.
+
