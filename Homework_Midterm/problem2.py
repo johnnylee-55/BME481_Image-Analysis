@@ -90,5 +90,5 @@ def nmfManualInit(img, WInit, HInit):
     V = np.dot(W, H)
     plotfigs(W, "W basis", H, "H basis", V, "V = WH")
 
-WInit = [] # an array of size 1x20
-HInit = [] # an array of size 20x1072 (image length)
+WInit = [] # an array of size 1x20 (20 = number of bases)
+HInit = [] # an array of size 20x1072 (1072 = image length)
