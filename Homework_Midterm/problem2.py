@@ -6,10 +6,15 @@
 import numpy as np
 import matplotlib.pyplot as plt 
 from sklearn import decomposition
-from PIL import Image, ImageOps
+from PIL import Image
 
 brain = Image.open("Homework_Midterm/HE_Brain.bmp")
-img = ImageOps.grayscale(brain)
+colorChannelArr = Image.Image.split(brain)
+
+for i in range(3):
+    colorChannelArr[i].show()
+
+
 
 ## Apply NMF (e.g, V = WH) by randomly initializing W and H. Do this 3 times. Display 
 ## the basis images. Are results consistent?
@@ -45,3 +50,4 @@ for i in range(3):
 ## You can move the cursor over the image manually, read the values, and substitute in W 
 ## or you may want to take advantage of a precomputed mask, named HE_Brain_mask.bmp.
 
+# prior
