@@ -9,7 +9,6 @@ import cv2
 from scipy import ndimage as ndi
 import matplotlib.pyplot as plt
 from medpy.filter.smoothing import anisotropic_diffusion
-import numpy as np
 
 # reads and returns image in grayscale
 def ReadAndGrayscale(imgPath):
@@ -43,7 +42,7 @@ applyAndDisplayGaussian(cows, sigmaValues)
 
 # applies anisotropic filter to an image then shows image
 def applyAndDisplayAnisotropic(image):
-    result = anisotropic_diffusion(image)
+    result = anisotropic_diffusion(image) #this doesn't work on my machine 
     plt.imshow(result)
     plt.title('Anisotropic filter')
     plt.axis('off')
